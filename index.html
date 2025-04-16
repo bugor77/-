@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Геометричні фігури</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f8ff; }
+        h1 { color: #2c3e50; }
+        .container { width: 80%; margin: auto; }
+        .figure { margin: 20px auto; padding: 15px; background: white; border-radius: 10px; box-shadow: 0 0 10px gray; cursor: pointer; }
+        .shape { display: flex; justify-content: center; align-items: center; height: 150px; perspective: 500px; }
+        .hidden { display: none; }
+        .top-link { display: block; margin-top: 10px; font-size: 16px; text-decoration: none; color: blue; }
+
+        /* 2D-фігури */
+        .rectangle { width: 150px; height: 100px; background: #3498db; }
+        .circle { width: 120px; height: 120px; background: #2ecc71; border-radius: 50%; }
+        .triangle { width: 0; height: 0; border-left: 75px solid transparent; border-right: 75px solid transparent; border-bottom: 130px solid #e74c3c; }
+        
+        /* 3D-фігури */
+        .cone-3d { width: 0; height: 0; border-left: 60px solid transparent; border-right: 60px solid transparent; border-bottom: 150px solid #d35400; transform: rotateX(25deg); }
+        .cylinder-3d { width: 70px; height: 150px; background: linear-gradient(to bottom, #8e44ad, #c39bd3); border-radius: 35px; }
+        .pyramid-3d { width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 100px solid #f1c40f; transform: rotateX(25deg); }
+        .sphere-3d { width: 120px; height: 120px; background: radial-gradient(circle at 30% 30%, #ff7675, #d63031); border-radius: 50%; box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.5), 10px 10px 15px rgba(0, 0, 0, 0.3); }
+
+        /* Відомості про різновиди */
+        .info { margin-top: 15px; padding: 10px; background: #f9f9f9; border-radius: 5px; display: none; }
+        .info h3 { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1 id="top">Геометричні фігури</h1>
+
+    <div class="container">
+        <div class="figure" onclick="toggleInfo('triangle-info')">
+            <h2>Трикутник</h2>
+            <div class="shape"><div class="triangle"></div></div>
+            <div id="triangle-info" class="info">
+                <h3>Різновиди трикутників</h3>
+                <p>Рівносторонній, рівнобедрений, різносторонній.</p>
+                <a class="top-link" href="#top">⬆ До початку</a>
+            </div>
+        </div>
+
+        <div class="figure" onclick="toggleInfo('rectangle-info')">
+            <h2>Прямокутник</h2>
+            <div class="shape"><div class="rectangle"></div></div>
+            <div id="rectangle-info" class="info">
+                <h3>Різновиди прямокутників</h3>
+                <p>Квадрат, витягнутий прямокутник.</p>
+                <a class="top-link" href="#top">⬆ До початку</a>
+            </div>
+        </div>
+
+        <div class="figure" onclick="toggleInfo('circle-info')">
+            <h2>Коло</h2>
+            <div class="shape"><div class="circle"></div></div>
+            <div id="circle-info" class="info">
+                <h3>Різновиди кіл</h3>
+                <p>Окружність, сектор, сегмент.</p>
+                <a class="top-link" href="#top">⬆ До початку</a>
+            </div>
+        </div>
+
+        <div class="figure" onclick="toggleInfo('cone-info')">
+            <h2>Конус</h2>
+            <div class="shape"><div class="cone-3d"></div></div>
+            <div id="cone-info" class="info">
+                <h3>Різновиди конусів</h3>
+                <p>Прямий, косий.</p>
+                <a class="top-link" href="#top">⬆ До початку</a>
+            </div>
+        </div>
+
+        <div class="figure" onclick="toggleInfo('cylinder-info')">
+            <h2>Циліндр</h2>
+            <div class="shape"><div class="cylinder-3d"></div></div>
+            <div id="cylinder-info" class="info">
+                <h3>Різновиди циліндрів</h3>
+                <p>Прямий, косий.</p>
+                <a class="top-link" href="#top">⬆ До початку</a>
+            </div>
+        </div>
+
+        <div class="figure" onclick="toggleInfo('pyramid-info')">
+            <h2>Піраміда</h2>
+            <div class="shape"><div class="pyramid-3d"></div></div>
+            <div id="pyramid-info" class="info">
+                <h3>Різновиди пірамід</h3>
+                <p>Трикутна, чотирикутна, п’ятикутна.</p>
+                <a class="top-link" href="#top">⬆ До початку</a>
+            </div>
+        </div>
+
+        <div class="figure" onclick="toggleInfo('sphere-info')">
+            <h2>Сфера</h2>
+            <div class="shape"><div class="sphere-3d"></div></div>
+            <div id="sphere-info" class="info">
+                <h3>Різновиди сфер</h3>
+                <p>Повна сфера, часткова сфера.</p>
+                <a class="top-link" href="#top">⬆ До початку</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleInfo(id) {
+            let infos = document.querySelectorAll('.info');
+            infos.forEach(info => {
+                if (info.id === id) {
+                    info.style.display = info.style.display === "none" || info.style.display === "" ? "block" : "none";
+                } else {
+                    info.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
+
